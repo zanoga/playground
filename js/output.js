@@ -1,5 +1,6 @@
-define(function () {
-	var output = {},
+define(function (require) {
+	var $ = require('jquery'),
+		output = {},
 		console = window.console;
 
 
@@ -17,10 +18,13 @@ define(function () {
 
 
 	output.log = function () {
-		var text = [].map.call(arguments, function (val) {
+		var text = $.map(arguments, function (val) {
 			return val && val.nodeType
 				? ('&lt;' + val.nodeName.toLowerCase() + '/&gt;')
-				: JSON.stringify(val)
+				: (val === void 0
+					? "undefined"
+					: JSON.stringify(val)
+				)
 			;
 		}).join(' ');
 
