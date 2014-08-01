@@ -53,7 +53,7 @@ define(function (require) {
 		},
 
 		runTests: function () {
-			this.sandbox.eval('testSuite.run(' + this.tests + ')');
+			this.tests && this.sandbox.eval('testSuite.run(' + this.tests + ')');
 		},
 
 		exec: function (code) {

@@ -63,7 +63,7 @@ define(function (require) {
 				this.window.__result = null;
 				this.window.eval('window.__result = (' + code + ')');
 			} catch (err) {
-				console.log('eval:', err);
+				console.log('eval:', code, err);
 			}
 		},
 

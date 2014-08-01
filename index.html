@@ -18,6 +18,12 @@
 			height: 100%;
 		}
 
+		h1.error {
+			margin: 50px;
+			font-size: 300%;
+			text-align: center;
+		}
+
 		#editor {
 			width: 65%;
 			height: 100%;
@@ -106,13 +112,19 @@
 
 
 		// App
-		require(['app'], function (App) {
-			window.app = new App({
-				idTasks: '#tasks',
-				idEditor: '#editor',
-				idSuite: '#suite',
-				idOutput: '#output'
-			});
+		require(['jquery', 'app'], function ($, App) {
+			var env = window;
+
+			if (env.FormData && env.Blob) {
+				env.app = new App({
+					idTasks: '#tasks',
+					idEditor: '#editor',
+					idSuite: '#suite',
+					idOutput: '#output'
+				});
+			} else {
+				document.body.innerHTML = '<h1 class="error">Use Chrome, Luke!</h1>'
+			}
 		});
 	</script>
 
