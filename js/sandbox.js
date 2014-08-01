@@ -47,11 +47,21 @@ define(function (require) {
 
 
 			try {
-				var document = this.document;
+				var document = this.document,
+					loops = []
+				;
+
+				code = code.replace(/\b(for|while)\s*\(.*?\)\s*\{/g, function (begin) {
+					var loop = '___loop' + loops.length;
+					loops.push(loop);
+					return begin + ' if (' + loop + '++ > 1500) throw "Infinite loop!";';
+				});
 
 				document.open();
 
 				html && document.write(html);
+				loops.length && document.write('<script>var ' + loops.join(' = 0, ') + ' = 0;</script>');
+
 				document.write('<script>' + code + '</script>');
 
 				document.close();
