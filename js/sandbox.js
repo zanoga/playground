@@ -71,9 +71,9 @@ define(function (require) {
 		eval: function (code) {
 			try {
 				this.window.__result = null;
-				this.window.eval('window.__result = (' + code + ')');
+				this.window.eval('window.__result = (' + code.trim().replace(/;+$/, '') + ')');
 			} catch (err) {
-				console.log('eval:', code, err);
+//				console.log('eval:', code, err);
 			}
 		},
 
