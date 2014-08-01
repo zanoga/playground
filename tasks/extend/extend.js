@@ -5,7 +5,7 @@ Class.extend = function (desc) {
 
 
 /** @class Widget */
-var Widget = Class.extend({
+var Widget = Class.extend(/** @lends Widget.prototype */{
     constructor: function (el, options) {
         this.el = el;
         this.options = options;
@@ -18,7 +18,7 @@ var Widget = Class.extend({
 
 /** @class Dropdown */
 /** @extends Widget */
-var Dropdown = Widget.extend({
+var Dropdown = Widget.extend(/** @lends Dropdown.prototype */{
     constructor: function () {
         Widget.apply(this, arguments);
         this.find('.js-ctrl').addEventListener('click', this);
