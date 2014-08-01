@@ -29,5 +29,9 @@
 
 	"dropdown": {
 		"name": "Dropdown должен наследовать Widget"
+	},
+
+	"extend": {
+		"name": "Реализовать метод Class.extend"
 	}
 }
