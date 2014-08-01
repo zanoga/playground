@@ -41,5 +41,9 @@
 
 	"extend": {
 		"name": "Реализовать метод Class.extend"
+	},
+
+	"romannumbers": {
+		"name": "Римские цифры 0..IX ;]"
 	}
 }
