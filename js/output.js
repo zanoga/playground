@@ -19,8 +19,9 @@ define(function () {
 	output.log = function () {
 		var text = [].map.call(arguments, function (val) {
 			return val && val.nodeType
-				? '&lt;' + val.nodeName.toLowerCase() + '/&gt;'
-				: JSON.stringify(val);
+				? ('&lt;' + val.nodeName.toLowerCase() + '/&gt;')
+				: JSON.stringify(val)
+			;
 		}).join(' ');
 
 		this.el.appendChild(document.createTextNode(text));
