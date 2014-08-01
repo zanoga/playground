@@ -8,6 +8,7 @@ define(function (require) {
 	var tasks = require('tasks');
 	var Sandbox = require('sandbox');
 	var debounce = require('debounce');
+	var email = require('email');
 
 
 
@@ -18,7 +19,6 @@ define(function (require) {
 	function App(opts) {
 		output.el = $(opts.idOutput)[0];
 		testSuite.el = $(opts.idSuite)[0];
-
 
 		this.key = 'app';
 		this.editor = this.initEditor(opts.idEditor);
@@ -31,6 +31,10 @@ define(function (require) {
 			this.tests = tests;
 			this.setCode(localStorage.getItem(this.getKey()) || code, html);
 		}.bind(this));
+
+		email.onclick = function () {
+			email.set(this.getKey(), this.getCode());
+		}.bind(this);
 	}
 
 
