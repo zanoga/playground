@@ -4,9 +4,12 @@ define(function (require) {
 	var testSuite = require('testSuite');
 	var simulateEvent = require('simulateEvent');
 
+	require('hljs');
+
 
 	var Sandbox = function (silent) {
 		this.silent = silent;
+		this.htmlMode = false;
 	};
 
 
@@ -17,7 +20,12 @@ define(function (require) {
 			}
 
 			var sandbox = (this.el = document.createElement('iframe'));
-			(parent || document.body).appendChild(sandbox);
+
+			parent = parent || document.body;
+
+			parent.appendChild(sandbox);
+			parent.appendChild($('<a class="showHtml"></a>')[0]);
+
 
 			this.window = sandbox.contentWindow;
 			this.document = this.window.document;
@@ -30,6 +38,35 @@ define(function (require) {
 			this.window.console = $.extend({}, output, this.silent ? { log: $.noop } : {});
 			this.window.testSuite = testSuite;
 			this.window.isolate = this.isolate.bind(this);
+			this.window.triggerError = this.triggerError.bind(this);
+
+			this.btn = this.el.nextSibling;
+			this.btn.addEventListener('click', this.toggleHtml.bind(this, void 0));
+
+			this.toggleHtml(this.htmlMode);
+		},
+
+		toggleHtml: function (state) {
+			state = (state === void 0) ? !this.htmlMode : state;
+			this.htmlMode = state;
+
+			this.btn.innerText = state ? 'Hide HTML' : 'Show HTML';
+			this.$html && this.$html.remove();
+
+			if (state) {
+				this.$html = $('<pre class="html"><code class="html"></code></pre>')
+					.insertBefore(this.el)
+					.find('code')
+						.text(this.html.replace(/<style[\s\S]+<\/style>/g, '').trim())
+						.end()
+				;
+
+				hljs.highlightBlock(this.$html.find('code')[0])
+			}
+		},
+
+		triggerError: function (msg, file, line, column, err) {
+			output.error(msg + '\n' + err.stack.split('\n').slice(0, -4).join('\n'));
 		},
 
 		isolate: function (callback) {
@@ -59,9 +96,18 @@ define(function (require) {
 
 				document.open();
 
+				// Вставляем HTML
 				html && document.write(html);
+
+				// Определяем переменные для цикла
 				loops.length && document.write('<script>var ' + loops.join(' = 0, ') + ' = 0;</script>');
 
+				// Перехватываем ошибки
+				document.write('<script>window.onerror = function () { ' +
+					(this.silent ? 'return true' : 'window.triggerError.apply({}, arguments)') +
+				'; };</script>');
+
+				// Публикуем код
 				document.write('<script>' + code + '</script>');
 
 				document.close();

@@ -12,6 +12,20 @@ define(function (require) {
 	});
 
 
+	output.append = function (el, attrs) {
+		if (typeof el == 'string') {
+			el = document.createElement(el);
+
+			if(attrs) {
+				$.extend(el, attrs);
+			}
+		}
+
+		this.el.appendChild(el);
+		return el;
+	};
+
+
 	output.clear = function () {
 		this.el.innerHTML = '';
 	};
@@ -28,15 +42,18 @@ define(function (require) {
 			;
 		}).join(' ');
 
-		this.el.appendChild(document.createTextNode(text));
-		this.el.appendChild(document.createElement('br'));
-
+		this.append('div', { innerText: text, className: 'log' });
 		console.log.apply(console, arguments);
 	};
 
 
+	output.error = function (msg) {
+		this.append('div', { innerText: msg, className: 'log' }).style.color = 'red';
+	};
+
+
 	output.htmlBlock = function (el) {
-		this.el.appendChild(el);
+		this.append(el);
 	};
 
 
