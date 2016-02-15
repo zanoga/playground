@@ -42,7 +42,8 @@ define(function (require) {
 		initEditor: function (id) {
 			var editor = ace.edit(id.substr(1));
 
-			editor.setTheme('ace/theme/xcode');
+			// editor.setTheme('ace/theme/xcode');
+			editor.setTheme("ace/theme/monokai");
 			editor.getSession().setMode('ace/mode/javascript');
 
 			editor.on('change', debounce(function () {
