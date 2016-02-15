@@ -27,14 +27,14 @@ define(function (require) {
 
 		this.restore();
 
-		tasks.onselect(function (code, html, tests) {
-			this.tests = tests;
-			this.setCode(localStorage.getItem(this.getKey()) || code, html);
-		}.bind(this));
+		// tasks.onselect(function (code, html, tests) {
+		// 	this.tests = tests;
+		// 	this.setCode(localStorage.getItem(this.getKey()) || code, html);
+		// }.bind(this));
 
-		email.onclick = function () {
-			email.set(this.getKey(), this.getCode());
-		}.bind(this);
+		// email.onclick = function () {
+		// 	email.set(this.getKey(), this.getCode());
+		// }.bind(this);
 	}
 
 
