@@ -149,6 +149,7 @@
 
 	<script>
 		requirejs.config({
+			waitSeconds: 10,
 			urlArgs: 'bust=' + (new Date).getTime(),
 
 			shims: {
@@ -159,7 +160,8 @@
 				'ace': '//cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace',
 				'text': '//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.12/text',
 				'jquery': '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min',
-				'hljs': '//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.0/highlight.min'
+				'hljs': '//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.0/highlight.min',
+				'firebase': '//cdn.firebase.com/js/client/2.4.0/firebase'
 			}
 		});
 

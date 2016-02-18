@@ -1,4 +1,5 @@
 define(function (require) {
+	'use strict';
 	require('ace');
 
 
@@ -8,8 +9,8 @@ define(function (require) {
 	// var tasks = require('tasks');
 	var Sandbox = require('sandbox');
 	var debounce = require('debounce');
-	// var email = require('email');
-
+	var email = require('email');
+	var fb = require('fb');
 
 
 	/**
@@ -32,9 +33,14 @@ define(function (require) {
 		// 	this.setCode(localStorage.getItem(this.getKey()) || code, html);
 		// }.bind(this));
 
-		// email.onclick = function () {
-		// 	email.set(this.getKey(), this.getCode());
-		// }.bind(this);
+		email.onclick = function () {
+			email.set(null, this.getCode())
+				.then((codeRef) => {
+					let hash = codeRef.split('/').pop();
+					this.setHash(hash);
+					this.save();
+				});
+		}.bind(this);
 	}
 
 
@@ -55,6 +61,10 @@ define(function (require) {
 			}.bind(this), 500));
 
 			return editor;
+		},
+
+		setHash: function (hash) {
+			location.hash = hash;
 		},
 
 		runTests: function () {
@@ -80,11 +90,15 @@ define(function (require) {
 		},
 
 		getKey: function () {
-			return location.hash || this.key;
+			return (location.hash.length ? location.hash.slice(1) : null) || this.key;
 		},
 
 		restore: function () {
-			this.setCode(localStorage.getItem(this.getKey()) || '');
+			fb.get(this.getKey()).then((data) => {
+				this.setCode(data.code || '');
+			}, () => {
+				this.setCode(localStorage.getItem(this.getKey()) || '');
+			});
 		},
 
 		save: function () {
