@@ -1,4 +1,4 @@
-define(['jquery', 'app'], function ($, App) {
+define(['jquery', 'js/app'], function ($, App) {
     var env = window;
 
     if (env.FormData && env.Blob) {

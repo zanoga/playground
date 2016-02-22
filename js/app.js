@@ -3,13 +3,13 @@ define(function (require) {
 
 	var $ = require('jquery');
 	var ace = require('ace/ace');
-	var output = require('output');
-	var testSuite = require('testSuite');
+	var output = require('js/output');
+	var testSuite = require('js/testSuite');
 	// var tasks = require('tasks');
-	var Sandbox = require('sandbox');
-	var debounce = require('debounce');
-	var email = require('email');
-	var fb = require('fb');
+	var Sandbox = require('js/sandbox');
+	var debounce = require('js/debounce');
+	var email = require('js/email');
+	var fb = require('js/fb');
 
 	/**
 	 * @class App

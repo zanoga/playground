@@ -26,6 +26,7 @@
     "ace": "1.2.3",
     "jquery": "^2.2.0",
     "highlight.js": "https://github.com/isagalaev/highlight.js.git#^9.1.0",
-    "firebase": "^2.4.1"
+    "firebase": "^2.4.1",
+    "almond": "https://github.com/jrburke/almond.git#^0.3.1"
   }
 }

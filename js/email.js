@@ -2,7 +2,7 @@ define(function (require) {
 	'use strict';
 
 	var $ = require('jquery');
-	var fb = require('fb');
+	var fb = require('js/fb');
 	var $el = $('<a href="#" id="send-result">Save result</a>').appendTo('body');
 	var EMAIL = 'a.mezin@javascript.ru';
 

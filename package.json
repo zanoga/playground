@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/iketari/playground",
   "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-require": "^1.1.2",
     "webpack": "^1.12.13",
     "webpack-dev-server": "^1.14.1"
   }
