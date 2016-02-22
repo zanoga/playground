@@ -1,9 +1,8 @@
 define(function (require) {
 	'use strict';
-	require('ace');
-
 
 	var $ = require('jquery');
+	var ace = require('ace/ace');
 	var output = require('output');
 	var testSuite = require('testSuite');
 	// var tasks = require('tasks');
@@ -11,7 +10,6 @@ define(function (require) {
 	var debounce = require('debounce');
 	var email = require('email');
 	var fb = require('fb');
-
 
 	/**
 	 * @class App

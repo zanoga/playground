@@ -144,7 +144,7 @@
 	<div id="suite"></div>
 
 
-	<script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js" data-main="js/"></script>
+	<script src="bower_components/requirejs/require.js" data-main="js/main"></script>
 
 
 	<script>
@@ -157,41 +157,12 @@
 			},
 
 			paths: {
-				'ace': '//cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace',
-				'text': '//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.12/text',
-				'jquery': '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min',
-				'hljs': '//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.0/highlight.min',
-				'firebase': '//cdn.firebase.com/js/client/2.4.0/firebase'
-			}
-		});
-
-
-		// App
-		require(['jquery', 'app'], function ($, App) {
-			var env = window;
-
-			if (env.FormData && env.Blob) {
-				env.app = new App({
-					idTasks: '#tasks',
-					idEditor: '#editor',
-					idSuite: '#suite',
-					idOutput: '#output'
-				});
-			} else {
-				document.body.innerHTML = '<h1 class="error">Use Chrome, Luke!</h1>'
+				'ace': '/bower_components/ace/lib/ace',
+				'jquery': '/bower_components/jquery/dist/jquery',
+				'hljs': '/bower_components/highlight.js/src/highlight',
+				'firebase': '/bower_components/firebase/firebase'
 			}
 		});
 	</script>
-
-
-	<!--script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-	  ga('create', 'UA-16483888-3', 'rubaxa.github.io');
-	  ga('send', 'pageview');
-	</script-->
 </body>
 </html>
