@@ -2,6 +2,8 @@ requirejs.config({
     waitSeconds: 10,
     urlArgs: 'bust=' + (new Date).getTime(),
 
+    deps: ['ace/theme/monokai', 'ace/mode/javascript'],
+
     shims: {
         'hljs': { exports: 'hljs' }
     },
