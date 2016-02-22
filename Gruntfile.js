@@ -3,11 +3,11 @@ module.exports = function(grunt) {
   grunt.initConfig({
     requirejs: {
         options: {
-            baseUrl: '.',
-            config: ['js/require.config.js'],
-            name: 'js/main',
-    		require: 'bower_components/requirejs/require',
-    		almond: 'bower_components/almond/almond',
+            baseUrl: './js/',
+            config: ['require.config.js'],
+            name: 'main',
+    		require: '../bower_components/requirejs/require',
+    		almond: '../bower_components/almond/almond',
             out: 'build/main.js'
         },
         prod: {

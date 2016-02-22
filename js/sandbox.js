@@ -1,8 +1,8 @@
 define(function (require) {
 	var $ = require('jquery');
-	var output = require('js/output');
-	var testSuite = require('js/testSuite');
-	var simulateEvent = require('js/simulateEvent');
+	var output = require('output');
+	var testSuite = require('testSuite');
+	var simulateEvent = require('simulateEvent');
 
 	require('hljs');
 

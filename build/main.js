@@ -36210,7 +36210,7 @@ exports.UndoManager = UndoManager;
 exports.version = "1.2.3";
 });
 
-define('js/output',['require','jquery'],function (require) {
+define('output',['require','jquery'],function (require) {
 	var $ = require('jquery'),
 		output = {},
 		console = window.console;
@@ -36273,7 +36273,7 @@ define('js/output',['require','jquery'],function (require) {
 	return output;
 });
 
-define('js/testSuite',[],function () {
+define('testSuite',[],function () {
 	var stringify = JSON.stringify;
 
 
@@ -36330,7 +36330,7 @@ define('js/testSuite',[],function () {
 	};
 });
 
-define('js/simulateEvent',[],function () {
+define('simulateEvent',[],function () {
 	var defaultOptions = {
 		x: 0,
 		y: 0,
@@ -37162,11 +37162,11 @@ https://highlightjs.org/
   return hljs;
 }));
 
-define('js/sandbox',['require','jquery','js/output','js/testSuite','js/simulateEvent','hljs'],function (require) {
+define('sandbox',['require','jquery','output','testSuite','simulateEvent','hljs'],function (require) {
 	var $ = require('jquery');
-	var output = require('js/output');
-	var testSuite = require('js/testSuite');
-	var simulateEvent = require('js/simulateEvent');
+	var output = require('output');
+	var testSuite = require('testSuite');
+	var simulateEvent = require('simulateEvent');
 
 	require('hljs');
 
@@ -37296,7 +37296,7 @@ define('js/sandbox',['require','jquery','js/output','js/testSuite','js/simulateE
 	return Sandbox;
 });
 
-define('js/debounce',[],function () {
+define('debounce',[],function () {
 	return function debounce(func, wait, immediate) {
 		var timeout;
 
@@ -37601,7 +37601,7 @@ X.prototype.Ze=function(a,b){D("Firebase.resetPassword",1,2,arguments.length);sg
 
 define("firebase", function(){});
 
-define('js/fb',['require','firebase'],function (require) {
+define('fb',['require','firebase'],function (require) {
 	'use strict';
 	const FIREBASE_URL = 'https://js-playground.firebaseio.com/';
 	var firebase = require('firebase');
@@ -37641,11 +37641,11 @@ define('js/fb',['require','firebase'],function (require) {
 		}
 	}
 });
-define('js/email',['require','jquery','js/fb'],function (require) {
+define('email',['require','jquery','fb'],function (require) {
 	'use strict';
 
 	var $ = require('jquery');
-	var fb = require('js/fb');
+	var fb = require('fb');
 	var $el = $('<a href="#" id="send-result">Save result</a>').appendTo('body');
 	var EMAIL = 'a.mezin@javascript.ru';
 
@@ -37674,18 +37674,18 @@ define('js/email',['require','jquery','js/fb'],function (require) {
 	return email;
 });
 
-define('js/app',['require','jquery','ace/ace','js/output','js/testSuite','js/sandbox','js/debounce','js/email','js/fb'],function (require) {
+define('app',['require','jquery','ace/ace','output','testSuite','sandbox','debounce','email','fb'],function (require) {
 	'use strict';
 
 	var $ = require('jquery');
 	var ace = require('ace/ace');
-	var output = require('js/output');
-	var testSuite = require('js/testSuite');
+	var output = require('output');
+	var testSuite = require('testSuite');
 	// var tasks = require('tasks');
-	var Sandbox = require('js/sandbox');
-	var debounce = require('js/debounce');
-	var email = require('js/email');
-	var fb = require('js/fb');
+	var Sandbox = require('sandbox');
+	var debounce = require('debounce');
+	var email = require('email');
+	var fb = require('fb');
 
 	/**
 	 * @class App
@@ -37784,7 +37784,7 @@ define('js/app',['require','jquery','ace/ace','js/output','js/testSuite','js/san
 	return App;
 });
 
-define('js/main',['jquery', 'js/app'], function ($, App) {
+define('main',['jquery', 'app'], function ($, App) {
     var env = window;
 
     if (env.FormData && env.Blob) {
@@ -37800,4 +37800,4 @@ define('js/main',['jquery', 'js/app'], function ($, App) {
 });
 
 
-require(["js/main"]);
+require(["main"]);
