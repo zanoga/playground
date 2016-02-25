@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html  manifest="cache.appcache">
 <head>
 	<meta charset="utf-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -149,11 +149,11 @@
 	<script src="js/require.config.js"></script> -->
 
 	<script>
-		if('serviceWorker' in navigator) {
-		  navigator.serviceWorker
-		           .register('sw.js')
-		           .then(function() { console.log("Service Worker Registered"); });
-		}
+		// if('serviceWorker' in navigator) {
+		//   navigator.serviceWorker
+		//            .register('sw.js')
+		//            .then(function() { console.log("Service Worker Registered"); });
+		// }
 	</script>
 </body>
 </html>
