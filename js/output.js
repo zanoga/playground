@@ -5,7 +5,7 @@ define(function (require) {
 
 
 	// Extend
-	'error info warn'.split(' ').forEach(function (name) {
+	'error info warn assert time timeEnd'.split(' ').forEach(function (name) {
 		output[name] = function () {
 			return console[name].apply(console, arguments);
 		};

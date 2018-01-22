@@ -20,6 +20,7 @@ define(function (require) {
 			}
 
 			var sandbox = (this.el = document.createElement('iframe'));
+			this.el.style.display = 'none';
 
 			parent = parent || document.body;
 
@@ -43,7 +44,7 @@ define(function (require) {
 			this.btn = this.el.nextSibling;
 			this.btn.addEventListener('click', this.toggleHtml.bind(this, void 0));
 
-			this.toggleHtml(this.htmlMode);
+			// this.toggleHtml(this.htmlMode);
 		},
 
 		toggleHtml: function (state) {
